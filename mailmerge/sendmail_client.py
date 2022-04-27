@@ -22,12 +22,12 @@ MailmergeConfig = collections.namedtuple(
 class SendmailClient:
     """Represent a client connection to an SMTP server."""
 
-    def __init__(self, config_path, dry_run=False):
+    def __init__(self, config_path, password=None, dry_run=False):
         """Read configuration from server configuration file."""
         self.config_path = config_path
         self.dry_run = dry_run  # Do not send real messages
         self.config = None      # Config read from config_path by read_config()
-        self.password = None    # Password read from stdin
+        self.password = password    # Password read from stdin
         self.lastsent = None    # Timestamp of last successful send
         self.read_config()
 
